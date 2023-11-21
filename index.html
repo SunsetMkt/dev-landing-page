@@ -227,6 +227,21 @@
         </a>
         <a
           target="_blank"
+          href="https://twitter.com"
+          rel="nofollow noopener noreferrer me"
+          itemprop="sameAs"
+          id="twitter"
+          style="display: none"
+        >
+          <i
+            class="fa-brands fa-twitter"
+            aria-hidden="true"
+            title="Twitter"
+          ></i>
+          <span class="sr-only">Twitter</span>
+        </a>
+        <a
+          target="_blank"
           href="https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xafce72de15a64a20f9e731bbc8d10d21fdcb405a"
           rel="nofollow noopener noreferrer me"
           itemprop="sameAs"
@@ -383,6 +398,27 @@
       }
     } catch (e) {
       console.error(e);
+    }
+  </script>
+
+  <script>
+    // Twitter handler
+    if (
+      navigator.language === "zh-CN" ||
+      navigator.languages.includes("zh-CN")
+    ) {
+    } else {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://security.lwd-temp.top/api/v1.09/twitter");
+      xhr.send();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          const twitter = document.querySelector(".twitter");
+          twitter.href = `${data.url}`;
+          twitter.removeAttribute("style");
+        }
+      };
     }
   </script>
 </html>
