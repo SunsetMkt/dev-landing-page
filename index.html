@@ -417,7 +417,8 @@
     // Twitter handler
     if (
       navigator.language === "zh-CN" ||
-      navigator.languages.includes("zh-CN")
+      navigator.languages.includes("zh-CN") ||
+      Intl.DateTimeFormat().resolvedOptions().timeZone === "Asia/Shanghai"
     ) {
     } else {
       const xhr = new XMLHttpRequest();
