@@ -201,7 +201,7 @@
   </head>
 
   <body>
-    <main>
+    <main id="main">
       <div class="intro" id="intro-confetti">Hello, I'm Sunset!</div>
       <div class="tagline">
         Amateur independent developer | Windows & Linux user | Gamer
@@ -701,5 +701,17 @@
     confetti.setPower(25);
     confetti.setFade(false);
     confetti.destroyTarget(false);
+    var clickCount = 0;
+    document.getElementById("intro-confetti").onclick = function () {
+      clickCount++;
+      if (clickCount == 50) {
+        let confetti2 = new Confetti("main");
+        confetti2.setCount(75);
+        confetti2.setSize(1);
+        confetti2.setPower(25);
+        confetti2.setFade(false);
+        confetti2.destroyTarget(false);
+      }
+    };
   </script>
 </html>
