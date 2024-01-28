@@ -160,9 +160,9 @@
     </main>
     <script>
       function getCurrURLPathAndArg() {
-        // 获取当前URL，但仅保留域名之后的路径部分和参数
-        var url = window.location.href;
-        var urlPath = url.replace(/^(?:\/\/|[^\/]+)*\//, "");
+        // Get the current URL, but keep only the path and parameters after the domain
+        const url = window.location.href;
+        const urlPath = new URL(url).pathname + new URL(url).search;
         return urlPath;
       }
 
