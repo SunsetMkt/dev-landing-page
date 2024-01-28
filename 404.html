@@ -105,23 +105,34 @@
         font-weight: 100;
       }
 
-      .icons-social i {
-        padding: 10px;
+      /*List*/
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
       }
 
-      .icons-social a {
-        text-decoration: none;
+      ul li {
+        margin: 0.5rem 0;
       }
 
-      .devto {
-        margin-bottom: -0.2rem;
+      ul li a {
+        color: #fafafa;
+        text-decoration: underline;
+        font-size: 1.5rem;
+        font-weight: 100;
       }
 
-      .devto svg {
-        margin-bottom: -0.2rem;
-        margin-left: 0.675rem;
-        width: 2.65rem;
-        height: 2.65rem;
+      /**p**/
+
+      p {
+        font-size: 1.5rem;
+        font-weight: 100;
       }
     </style>
     <!--<link rel="stylesheet" href="css/themes/white-grey.css">-->
@@ -132,20 +143,64 @@
         background: #485564;
         color: #fafafa;
       }
-
-      .icons-social a {
-        color: #fafafa;
-      }
-
-      .icons-social a svg path {
-        fill: #fafafa;
-      }
     </style>
   </head>
   <body>
     <main>
-      <h1 class="intro">404</h1>
-      <p class="tagline">Page not found</p>
+      <h1 class="intro">404 Not Found</h1>
+      <p class="tagline">The page you requested could not be found.</p>
+      <p class="tagline">Are you looking for one of these?</p>
+      <!--List-->
+      <ul id="are-you-looking-for">
+        <noscript>
+          <p>JavaScript must be enabled to view suggestions.</p></noscript
+        >
+        <li><a href="/">Root Directory</a></li>
+      </ul>
     </main>
+    <script>
+      function getCurrURLPathAndArg() {
+        // 获取当前URL，但仅保留域名之后的路径部分和参数
+        var url = window.location.href;
+        var urlPath = url.replace(/^(?:\/\/|[^\/]+)*\//, "");
+        return urlPath;
+      }
+
+      // 一个异步函数，向URL发送HEAD请求，若为200，将URL添加到列表
+      async function checkURLUnderDomain(url, name) {
+        var response = await fetch(url, {
+          method: "HEAD",
+          redirect: "follow",
+        });
+        if (response.ok) {
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          a.href = url;
+          a.innerText = name;
+          li.appendChild(a);
+          document.getElementById("are-you-looking-for").appendChild(li);
+        }
+      }
+
+      // 一个列表，包含要测试的域名，和对应的名称
+      var domains = [
+        ["https://jekyll.lwd-temp.top/", "Blog page"],
+        ["https://jekyll2.lwd-temp.top/", "Blog page (Backup)"],
+        ["https://wd.lwd-temp.top/", "Wikidot Page (Deprecated)"],
+      ];
+
+      // 一个异步函数，遍历列表，调用checkURLUnderDomain
+      async function checkURLsUnderDomains() {
+        var urlPath = getCurrURLPathAndArg();
+        for (var i = 0; i < domains.length; i++) {
+          var url = domains[i][0] + urlPath;
+          var name = domains[i][1];
+          await checkURLUnderDomain(url, name);
+        }
+      }
+
+      // 调用checkURLsUnderDomains
+      checkURLsUnderDomains();
+    </script>
   </body>
 </html>
