@@ -175,6 +175,10 @@
         if (response.ok) {
           var li = document.createElement("li");
           var a = document.createElement("a");
+          // Remove cors prefix from URL
+          if (url.startsWith("https://cors.lwd-temp.top/")) {
+            url = url.replace("https://cors.lwd-temp.top/", "");
+          }
           a.href = url;
           a.innerText = name;
           li.appendChild(a);
@@ -186,7 +190,10 @@
       var domains = [
         ["https://jekyll.lwd-temp.top", "Blog page"],
         ["https://jekyll2.lwd-temp.top", "Blog page (Backup)"],
-        ["https://wd.lwd-temp.top", "Wikidot Page (Deprecated)"],
+        [
+          "https://cors.lwd-temp.top/https://wd.lwd-temp.top",
+          "Wikidot Page (Deprecated)",
+        ],
       ];
 
       // 一个异步函数，遍历列表，调用checkURLUnderDomain
