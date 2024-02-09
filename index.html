@@ -192,9 +192,22 @@
         z-index: -1;
       }
     </style>
+    <style>
+      #time {
+        font-size: 1em;
+        color: #fafafa;
+        /* 在左上角浮动 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 0.5em;
+        z-index: 999;
+      }
+    </style>
   </head>
 
   <body>
+    <div id="time"></div>
     <main id="main">
       <div class="intro" id="intro-confetti">Hello, I'm Sunset!</div>
       <div class="tagline">
@@ -709,5 +722,27 @@
       }
     };
     */
+  </script>
+  <script>
+    const timeDiv = document.getElementById("time");
+    function updateTime() {
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = String(now.getMonth() + 1).padStart(2, "0");
+      var day = String(now.getDate()).padStart(2, "0");
+      var hour = String(now.getHours()).padStart(2, "0");
+      var minute = String(now.getMinutes()).padStart(2, "0");
+      var second = String(now.getSeconds()).padStart(2, "0");
+      var millisecond = String(now.getMilliseconds()).padStart(3, "0");
+
+      var time = `${year}-${month}-${day} ${hour}:${minute}:${second}.${millisecond}`;
+
+      timeDiv.innerHTML = time;
+
+      requestAnimationFrame(updateTime);
+    }
+
+    // 每毫秒更新一次时间
+    requestAnimationFrame(updateTime);
   </script>
 </html>
