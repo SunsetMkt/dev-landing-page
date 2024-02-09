@@ -734,8 +734,12 @@
       var minute = String(now.getMinutes()).padStart(2, "0");
       var second = String(now.getSeconds()).padStart(2, "0");
       var millisecond = String(now.getMilliseconds()).padStart(3, "0");
+      var timezone = now.getTimezoneOffset() / -60;
+      if (timezone > 0) {
+        timezone = `+${timezone}`;
+      }
 
-      var time = `${year}-${month}-${day} ${hour}:${minute}:${second}.${millisecond}`;
+      var time = `${year}-${month}-${day} ${hour}:${minute}:${second}.${millisecond} UTC${timezone}`;
 
       timeDiv.innerHTML = time;
 
