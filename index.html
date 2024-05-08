@@ -777,4 +777,42 @@
     // 每毫秒更新一次时间
     // requestAnimationFrame(updateTime);
   </script>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    (function () {
+      // https://help.tawk.to/article/change-the-widget-based-on-the-visitors-language
+      function getChatId() {
+        // function to retrieve the property/widget chat id;
+        // substitute 000000000001 to property id
+        var lang = navigator.language || navigator.userLanguage;
+
+        // return the default language if the lang variable is empty
+        if (!lang) {
+          return "663ae0659a809f19fb2e7f5a/1htc4169r";
+        }
+
+        if (lang.match("en")) {
+          return "663ae0659a809f19fb2e7f5a/1htc4169r";
+        } else {
+          return "663ae0659a809f19fb2e7f5a/1htc4169r";
+        }
+      }
+
+      var chatId = getChatId();
+      if (!chatId) {
+        return;
+      }
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/" + chatId;
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
 </html>
