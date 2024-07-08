@@ -176,8 +176,8 @@
           var li = document.createElement("li");
           var a = document.createElement("a");
           // Remove cors prefix from URL
-          if (url.startsWith("https://cors.lwd-temp.top/?")) {
-            url = url.replace("https://cors.lwd-temp.top/?", "");
+          if (url.startsWith("https://cors./?")) {
+            url = url.replace("https://cors./?", "");
           }
           a.href = url;
           a.innerText = name;
@@ -188,12 +188,7 @@
 
       // 一个列表，包含要测试的域名，和对应的名称
       var domains = [
-        ["https://jekyll.lwd-temp.top", "Blog page"],
-        [
-          "https://cors.lwd-temp.top/?https://wd.lwd-temp.top",
-          "Wikidot Page (Deprecated)",
-        ],
-        ["https://gh.lwd-temp.top", "General GitHub Pages"],
+        // ["https://", "Blog page"],
       ];
 
       // 一个异步函数，遍历列表，调用checkURLUnderDomain
